@@ -24,11 +24,13 @@ jobs:
           pip install -r requirements.txt
           pip install pytest flake8
 
-      - name: 代码检查(flake8)
-        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics        continue-on-error: false
+      - name: 代码检查 flake8
+        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: 运行测试
-        run: pytest - name: 上传测试覆盖率
+        run: pytest
+
+      - name: 上传测试覆盖率
         if: always()
         uses: actions/upload-artifact@v4
         with:
